@@ -49,6 +49,14 @@ span {
   flex-wrap: wrap;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
+.align-items {
+  align-items: center;
+}
+
 .btn {
   font-weight: 600;
   font-size: 16px;
@@ -136,6 +144,10 @@ span {
   color: #9e9e9e;
 }
 
+.col-3 {
+  width: 25%;
+}
+
 .col-4 {
   width: 33.33%;
 }
@@ -153,7 +165,11 @@ span {
 }
 
 .header {
-  padding-top: 48px;
+  padding: 48px 0 20px;
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  z-index: 2;
 }
 
 .header__row {
@@ -232,17 +248,15 @@ span {
 }
 
 .cart__counter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   right: 0;
-  top: 0;
-  width: 12px;
-  height: 12px;
+  top: -12px;
+  min-width: 16px;
+  min-height: 16px;
+  padding: 3px 6px;
   color: #fff;
   background-color: #ff0303;
-  font-size: 7px;
+  font-size: 12px;
   border-radius: 50%;
   transform: translateX(50%);
 }
@@ -702,6 +716,7 @@ span {
 
 .sort {
   padding-top: 240px;
+  padding-bottom: 240px;
 }
 
 .sort__filter {
@@ -709,14 +724,358 @@ span {
 }
 
 .sort .filter__items {
-  margin-left: 65px;
   font-family: "Poppins";
   font-size: 16px;
   font-weight: 500;
+  margin-left: 65px;
   color: #707070;
+  cursor: pointer;
 }
 
 .sort .filter__items:nth-child(1) {
   margin: 0;
+}
+
+.sort .filter__items--active {
+  position: relative;
+  color: #ffbe00;
+  transition: 0.3s;
+}
+
+.sort .filter__items--active::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 12px;
+  background: url("../images/triangle.svg");
+  animation: triangle 0.3s forwards ease-in-out;
+}
+
+.sort .filter__element {
+  animation: sultan 1s;
+}
+
+@keyframes sultan {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.sort__row {
+  padding-top: 60px;
+  margin: -25px;
+}
+
+.sort__item {
+  padding: 45px 25px;
+}
+
+.sort__info {
+  padding: 50px 15px 0;
+}
+
+.sort__picture {
+  width: 100%;
+  box-shadow: 0 9px 18px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  height: 425px;
+}
+
+.sort__title {
+  font-family: "Poppins";
+  font-size: 24px;
+  font-weight: 500;
+  color: #222222;
+}
+
+.sort__price {
+  font-family: "Poppins";
+  font-size: 30px;
+  font-weight: 500;
+  color: #ffbe00;
+}
+
+.sort__description {
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 500;
+  margin: 15px 0 10px;
+  color: #707070;
+}
+
+.sort__add {
+  position: relative;
+  padding: 25px 32px;
+  border: none;
+  outline: none;
+  background-color: #ffbe00;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid transparent;
+  opacity: 1;
+}
+
+.sort__add::before, .sort__add::after {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.sort__add::before {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sort__add::after {
+  height: 32px;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sort__add:hover {
+  background-color: #fff;
+  border: 2px solid #ffbe00;
+}
+
+.sort__add:hover::before, .sort__add:hover::after {
+  background-color: #ffbe00;
+}
+
+.sort__add:active {
+  transform: translateY(-10px);
+}
+
+.sort__add--active {
+  background-color: transparent !important;
+  border: 2px solid transparent !important;
+}
+
+.sort__add--active::before, .sort__add--active::after {
+  opacity: 0;
+}
+
+.sort .circle-loader {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-bottom: 2em;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-left-color: #5cb85c;
+  vertical-align: top;
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.sort .load-complete {
+  display: inline-block;
+  animation: loader-spin 1.2s linear;
+  border-color: #5cb85c;
+  transition: border 500ms ease-out;
+  cursor: pointer;
+}
+
+.sort .checkmark {
+  display: none;
+  cursor: pointer;
+}
+
+.sort .checkmark--active {
+  display: block;
+  opacity: 0;
+  animation: 0.3s eraly 0s linear forwards;
+}
+
+@keyframes eraly {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sort .checkmark.draw:after {
+  animation-duration: 800ms;
+  animation-timing-function: ease;
+  animation-name: checkmark;
+  top: 73%;
+  left: 42%;
+  transform: scaleX(-1) rotate(135deg) translateX(-100%);
+}
+
+.sort .checkmark:after {
+  opacity: 1;
+  height: 2em;
+  width: 1em;
+  transform-origin: left top;
+  border-right: 3px solid #5cb85c;
+  border-top: 3px solid #5cb85c;
+  content: "";
+  left: 1em;
+  top: 2em;
+  position: absolute;
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: rotate(360deg);
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 1em;
+    opacity: 1;
+  }
+  40% {
+    height: 2em;
+    width: 1em;
+    opacity: 1;
+  }
+  100% {
+    height: 2em;
+    width: 1em;
+    opacity: 1;
+  }
+}
+
+@keyframes triangle {
+  0% {
+    bottom: -22px;
+    opacity: 0;
+  }
+  50% {
+    bottom: -8px;
+    opacity: 0.5;
+  }
+  100% {
+    bottom: -12px;
+    opacity: 1;
+  }
+}
+
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slick-track:before,
+.slick-track:after {
+  display: table;
+  content: '';
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
 }
 /*# sourceMappingURL=index.css.map */
