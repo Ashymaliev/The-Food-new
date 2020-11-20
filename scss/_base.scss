@@ -10,19 +10,29 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  
   overflow-x: hidden;
 }
-
+p {
+cursor: pointer;
+}
 li {
+  cursor: pointer;
   list-style-type: none;
 }
 
+h1,h2,h3,h4,h5,h6,h6{
+  cursor: pointer;
+}
+
 a {
+  cursor: pointer;
   text-decoration: none;
 }
 
 a,
 span {
+  cursor: pointer;
   display: inline-block;
 }
 

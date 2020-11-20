@@ -2,7 +2,7 @@
 	padding-bottom: 195px;
 	&__title {
 		color: $color-white;
-	}
+    }
 	.col-3 {
 		padding: 0 22px;
 	}
@@ -16,7 +16,8 @@
 		img {
 			height: 482px;
 			width: 100%;
-		}
+        }
+
 		&:hover {
 			.chiefs {
 				&__name {
@@ -32,6 +33,7 @@
 		}
 	}
 	&__info {
+        cursor: pointer;
 		position: absolute;
 		left: 50%;
 		bottom: 0;
@@ -47,7 +49,8 @@
 	}
 	&__name {
 		@include font($font-poppins, 30px, 500);
-		transition: 0.3s;
+        transition: 0.3s;
+     
 	}
 	&__speciality {
 		@include font($font-poppins, 24px, 400);
