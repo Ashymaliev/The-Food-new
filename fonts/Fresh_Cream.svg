@@ -9,7 +9,7 @@ Made with Scanahand. Copyright (c) Darrell Flood 2018. All Rights Reserved.
 <defs>
 <font id="FreshCream" horiz-adv-x="1543" >
   <font-face 
-    font-family="Fresh Cream"
+    font-family='Pattaya', sans-serif;
     font-weight="400"
     font-stretch="normal"
     units-per-em="2048"
